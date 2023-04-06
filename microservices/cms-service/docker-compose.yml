@@ -1,0 +1,32 @@
+version: '1.0'
+
+services:
+  cms-service:
+    container_name: cms-service
+    depends_on:
+      - mongodb
+    build:
+      context: .
+      target: development
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+
+    ports:
+      - 50051:50051
+    command: npm run start:dev
+  mongodb:
+    image: mongo:latest
+    restart: always
+    ports:
+      - 27017:27017
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=password
+      - MONGO_INITDB_DATABASE=cms_service
+      - MONGO_INITDB_USERNAME=stamp
+      - MONGO_INITDB_PASSWORD=123456789
+    volumes:
+      - mongodata:/data/db
+volumes:
+  mongodata:

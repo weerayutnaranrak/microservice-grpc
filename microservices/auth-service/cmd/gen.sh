@@ -1,0 +1,1 @@
+protoc ../../proto/*.proto -I=../../proto --go_out=./ --go-grpc_out=./

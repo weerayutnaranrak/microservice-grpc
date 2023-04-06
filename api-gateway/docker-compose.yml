@@ -1,0 +1,15 @@
+version: '1.0'
+
+services:
+  api-gateway:
+    container_name: api-gateway
+    build:
+      context: .
+      target: development
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+
+    ports:
+      - 3000:3000
+    command: npm run start:dev

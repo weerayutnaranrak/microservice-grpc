@@ -18,7 +18,7 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "copy:protos": "cpy ../../proto ./src"
+    "proto:gen": "protoc --plugin=node_modules/.bin/protoc-gen-ts_proto -I=../../proto --ts_proto_out=src/proto --ts_proto_opt=nestJs=true --ts_proto_opt=addGrpcMetadata=true ../../proto/*.proto"
   },
   "dependencies": {
     "@grpc/grpc-js": "^1.8.12",
@@ -29,11 +29,13 @@
     "@nestjs/microservices": "^9.3.9",
     "@nestjs/mongoose": "^9.2.2",
     "@nestjs/platform-express": "^9.0.0",
-    "cpy-cli": "^4.2.0",
     "ioredis": "^5.3.1",
     "mongoose": "^7.0.3",
+    "nestjs-proto-gen-ts": "^1.0.21",
+    "protoc-gen-ts": "^0.8.6",
     "reflect-metadata": "^0.1.13",
-    "rxjs": "^7.2.0"
+    "rxjs": "^7.2.0",
+    "ts-proto": "^1.146.0"
   },
   "devDependencies": {
     "@nestjs/cli": "^9.0.0",

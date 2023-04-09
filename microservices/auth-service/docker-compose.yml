@@ -1,0 +1,6 @@
+version: "3.7"
+services:
+  auth-service:
+    build:
+      context: .
+    image: auth-service

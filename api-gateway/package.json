@@ -18,7 +18,8 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "proto:gen": "protoc --plugin=node_modules/.bin/protoc-gen-ts_proto -I=../../proto --ts_proto_out=src/proto --ts_proto_opt=nestJs=true --ts_proto_opt=addGrpcMetadata=true ../../proto/*.proto"
+    "proto:gen": "protoc --plugin=node_modules/.bin/protoc-gen-ts_proto -I=../proto --ts_proto_out=src/microservices --ts_proto_opt=nestJs=true --ts_proto_opt=addGrpcMetadata=true ../proto/*.proto",
+    "cpy:proto": "cpy ../proto src"
   },
   "dependencies": {
     "@apollo/server": "^4.5.0",
@@ -29,6 +30,7 @@
     "@nestjs/graphql": "^11.0.0",
     "@nestjs/microservices": "^9.3.9",
     "@nestjs/platform-express": "^9.0.0",
+    "cpy-cli": "^4.2.0",
     "graphql": "^16.6.0",
     "nestjs-proto-gen-ts": "^1.0.21",
     "reflect-metadata": "^0.1.13",

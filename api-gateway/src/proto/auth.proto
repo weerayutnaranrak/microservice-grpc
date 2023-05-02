@@ -1,0 +1,37 @@
+syntax = "proto3";
+import "google/protobuf/wrappers.proto";
+
+package auth;
+option go_package="./services";
+
+service AuthService {
+    rpc Register (UserRegister) returns (ProfileRes) {}
+    rpc Profile (UserId) returns (ProfileRes) {}
+    rpc CreateAccessToken(UserId) returns (AccessToken){}
+    rpc Login(UserLogin) returns (ProfileRes) {}
+    rpc ValidateToken(AccessToken) returns (google.protobuf.BoolValue) {}
+}
+
+message UserRegister {
+    string email = 1;
+    string password = 2;
+    string firstName = 3;
+    string lastName = 4;
+}
+message UserLogin {
+    string email = 1;
+    string password =2;
+}
+message AccessToken {
+    string accessToken = 1;
+}
+
+message UserId {
+    string userId = 1;
+}
+
+message ProfileRes {
+   string firstName = 1;
+   string lastName = 2;
+   string email =  3;
+}

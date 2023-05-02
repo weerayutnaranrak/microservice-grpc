@@ -4,7 +4,9 @@ import { ContentModule } from './modules/content/content.module';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb://root:password@mongodb:27017/cms_db'),
+    MongooseModule.forRoot(
+      'mongodb://root:password@mongodb:27017/cms_db?authSource=admin',
+    ),
     ContentModule,
   ],
   controllers: [],
